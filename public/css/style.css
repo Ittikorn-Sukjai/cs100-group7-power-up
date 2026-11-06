@@ -1,5 +1,25 @@
+:root {
+  --ink: #17324d;
+  --canvas: #f4f7fb;
+  --line: #d9e2ee;
+  --accent: #285da8;
+}
+
+body { background: var(--canvas); color: var(--ink); }
+.hero { border-left: 5px solid var(--accent); padding: 1rem 1.25rem; background: #fff; border-radius: .5rem; }
+.hero h1 { font-weight: 700; letter-spacing: -.02em; }
+.eyebrow { color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+.panel { background: #fff; border: 1px solid var(--line); border-radius: .75rem; box-shadow: 0 .2rem .8rem rgb(23 50 77 / 6%); padding: 1.25rem; }
+
+.portfolio-list { display: grid; gap: .75rem; }
+.portfolio-choice { width: 100%; text-align: left; border: 1px solid var(--line); background: #fff; border-radius: .5rem; padding: .9rem 1rem; color: var(--ink); }
+.portfolio-choice:hover, .portfolio-choice.active { border-color: var(--accent); background: #eef5ff; }
+.portfolio-choice .small { color: #596b7e; }
+
 .preview-empty { border: 1px dashed var(--line); border-radius: .5rem; color: #596b7e; padding: 1rem; }
 .preview-profile { background: #eef5ff; border-radius: .5rem; padding: 1rem; }
 .preview-item { border-left: 4px solid #48a36f; }
 .preview-item .badge { font-weight: 500; margin: 0 .25rem .25rem 0; }
 .preview-reflection { background: #f7f9fc; border-radius: .4rem; font-size: .92rem; padding: .75rem; }
+
+@media (max-width: 575px) { .panel { padding: 1rem; } }
