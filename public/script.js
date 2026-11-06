@@ -1,3 +1,78 @@
+const STORAGE_KEY = "cs100-two-fixed-people-v2";
+
+const demoPortfolios = [
+  {
+    id: "person-1",
+    slotLabel: "Person 1",
+    name: "ยังไม่ได้กรอกข้อมูล",
+    displayName: "",
+    enjoy: "",
+    tried: "",
+    curious: "",
+    items: [],
+  },
+  {
+    id: "person-2",
+    slotLabel: "Person 2",
+    name: "ยังไม่ได้กรอกข้อมูล",
+    displayName: "",
+    enjoy: "",
+    tried: "",
+    curious: "",
+    items: [],
+  },
+];
+
+let portfolios = loadPortfolios();
+let selectedPortfolioId = portfolios[0]?.id ?? null;
+savePortfolios();
+
+function loadPortfolios() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (!Array.isArray(saved)) return structuredClone(demoPortfolios);
+
+    return demoPortfolios.map((demoPortfolio) => {
+      const savedPortfolio = saved.find((portfolio) => portfolio.id === demoPortfolio.id);
+      return savedPortfolio && Array.isArray(savedPortfolio.items)
+        ? {
+          ...demoPortfolio,
+          name: savedPortfolio.name || demoPortfolio.name,
+          displayName: savedPortfolio.displayName || "",
+          enjoy: savedPortfolio.enjoy || "",
+          tried: savedPortfolio.tried || "",
+          curious: savedPortfolio.curious || "",
+          items: savedPortfolio.items,
+        }
+        : structuredClone(demoPortfolio);
+    });
+  } catch {
+    return structuredClone(demoPortfolios);
+  }
+}
+
+function savePortfolios() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(portfolios));
+}
+
+function currentPortfolio() {
+  return portfolios.find((portfolio) => portfolio.id === selectedPortfolioId);
+}
+
+const portfolioForm = document.querySelector("#portfolio-form");
+const itemForm = document.querySelector("#item-form");
+const notice = document.querySelector("#notice");
+
+
+function showNotice(message, kind = "success") {
+  notice.textContent = message;
+  notice.className = `alert alert-${kind}`;
+  window.setTimeout(() => notice.classList.add("d-none"), 3500);
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
+}
 
 
 function render() {
@@ -8,9 +83,19 @@ function render() {
   document.querySelector("#save-item").disabled = !selected;
   document.querySelector("#preview-person").textContent = selected?.slotLabel ?? "-";
 
-   renderPreview(selected);
-   
+  
+  document.querySelector("#portfolio-list").innerHTML = portfolios.map((portfolio) => `
+    <button class="portfolio-choice ${portfolio.id === selectedPortfolioId ? "active" : ""}" type="button" data-portfolio-id="${portfolio.id}">
+      <span class="d-block fw-semibold">${escapeHtml(portfolio.slotLabel)}</span>
+      <span class="small">${escapeHtml(portfolio.name)} · ${portfolio.items.length} Items</span>
+    </button>`).join("");
 
+  document.querySelectorAll("[data-portfolio-id]").forEach((button) => {
+    button.addEventListener("click", () => { selectedPortfolioId = button.dataset.portfolioId; render(); });
+  });
+
+   renderPreview(selected);
+} 
 function renderPreview(portfolio) {
   const preview = document.querySelector("#portfolio-preview");
   if (!portfolio || portfolio.name === "ยังไม่ได้กรอกข้อมูล") {
@@ -77,11 +162,7 @@ itemForm.addEventListener("submit", (event) => {
     reflection: { whatDid: form.get("whatDid").trim(), whatLearned: form.get("whatLearned").trim(), challenge: form.get("challenge").trim(), nextStep: form.get("nextStep").trim() },
     evidence: [form.get("evidence").trim()],
   };
-  // Items are pushed only into the selected portfolio's own nested items array.
-  portfolio.items.push(item);
-  savePortfolios();
-  itemForm.reset();
-  itemForm.classList.remove("was-validated");
-  render();
-  showNotice(`บันทึก “${item.title}” ลงใน ${portfolio.slotLabel} แล้ว`);
-});
+  
+  
+
+render();
