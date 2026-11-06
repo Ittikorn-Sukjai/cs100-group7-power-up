@@ -12,6 +12,61 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
 <body>
-    
+    <main class="container py-4 py-md-5">
+      <!-- ส่วนที่ 2: หัวข้อหลักของเว็บ -->
+      <header class="hero mb-4">
+        <p class="eyebrow mb-2">CS100 · POWER UP!</p>
+        <h1>My Learning Portfolios</h1>
+        <p class="mb-0">สร้าง เลือก และแสดง Portfolio หลายชุด โดยเก็บ Portfolio Item ของแต่ละชุดแยกจากกัน</p>
+      </header>
+
+      <!-- ส่วนที่ 3: กล่องแจ้งผลหลังผู้ใช้เพิ่มหรือบันทึกข้อมูล -->
+      <div id="notice" class="alert d-none" role="status"></div>
+      <!-- ส่วนที่ 4: สร้าง Portfolio ใหม่ และเลือก Portfolio ที่ต้องการใช้งาน -->
+      <section class="row g-4 mb-4" aria-label="จัดการ Portfolio">
+        <div class="col-lg-5">
+          <div class="panel h-100">
+            <h2 class="h4">สร้าง Portfolio ใหม่</h2>
+            <form id="portfolio-form" class="row g-3" novalidate>
+              <div class="col-12">
+                <label class="form-label" for="portfolio-name">ชื่อ Portfolio</label>
+                <input id="portfolio-name" name="name" class="form-control" required placeholder="เช่น My UX Portfolio" />
+                <div class="invalid-feedback">กรุณากรอกชื่อ Portfolio</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="display-name">ชื่อที่แสดง</label>
+                <input id="display-name" name="displayName" class="form-control" required placeholder="เช่น Ploy P." />
+                <div class="invalid-feedback">กรุณากรอกชื่อที่แสดง</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="enjoy">What I Enjoy</label>
+                <input id="enjoy" name="enjoy" class="form-control" required placeholder="สิ่งที่ชอบทำ" />
+                <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="tried">What I've Tried</label>
+                <input id="tried" name="tried" class="form-control" required placeholder="สิ่งที่เคยลองทำ" />
+                <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="curious">What I'm Curious About</label>
+                <input id="curious" name="curious" class="form-control" required placeholder="สิ่งที่อยากเรียนรู้" />
+                <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
+              </div>
+              <div class="col-12"><button class="btn btn-primary w-100" type="submit">เพิ่ม Portfolio</button></div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="panel h-100">
+            <div class="d-flex flex-wrap justify-content-between gap-2 align-items-center mb-3">
+              <h2 class="h4 mb-0">Portfolio ที่มีอยู่</h2>
+              <span id="portfolio-count" class="badge text-bg-primary"></span>
+            </div>
+            <div id="portfolio-list" class="portfolio-list" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
 </body>
 </html>
