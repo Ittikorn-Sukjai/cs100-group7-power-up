@@ -1,0 +1,5 @@
+.preview-empty { border: 1px dashed var(--line); border-radius: .5rem; color: #596b7e; padding: 1rem; }
+.preview-profile { background: #eef5ff; border-radius: .5rem; padding: 1rem; }
+.preview-item { border-left: 4px solid #48a36f; }
+.preview-item .badge { font-weight: 500; margin: 0 .25rem .25rem 0; }
+.preview-reflection { background: #f7f9fc; border-radius: .4rem; font-size: .92rem; padding: .75rem; }
