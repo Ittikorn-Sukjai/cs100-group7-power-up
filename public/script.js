@@ -163,6 +163,12 @@ itemForm.addEventListener("submit", (event) => {
     evidence: [form.get("evidence").trim()],
   };
   
-  
+   portfolio.items.push(item);
+  savePortfolios();
+  itemForm.reset();
+  itemForm.classList.remove("was-validated");
+  render();
+  showNotice(`บันทึก “${item.title}” ลงใน ${portfolio.slotLabel} แล้ว`);
+});
 
 render();
