@@ -155,7 +155,7 @@ itemForm.addEventListener("submit", (event) => {
   if (!portfolio) return;
   const form = new FormData(itemForm);
   const item = {
-    id: `item-${crypto.randomUUID()}`,
+    id: `item-${Date.now()}-${Math.random().toString(36).slice(2)}`,
     title: form.get("title").trim(), type: form.get("type").trim(), date: form.get("date"),
     role: form.get("role").trim(), description: form.get("description").trim(),
     skills: form.get("skills").split(",").map((skill) => skill.trim()).filter(Boolean),
