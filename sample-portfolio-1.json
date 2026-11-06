@@ -1,0 +1,42 @@
+{
+  "id": "portfolio-student-1-web",
+  "name": "Student 1 - Web Development Portfolio",
+  "displayName": "Student 1",
+  "enjoy": "ออกแบบหน้าเว็บที่ใช้งานง่าย",
+  "tried": "HTML, CSS และ JavaScript",
+  "curious": "Accessibility และ UX",
+  "items": [
+    {
+      "id": "student-1-web-1",
+      "title": "My First Website",
+      "type": "Course Assignment",
+      "date": "2026-10-18",
+      "role": "Developer",
+      "description": "สร้างเว็บไซต์แนะนำตัวแบบ responsive",
+      "skills": ["HTML", "CSS"],
+      "reflection": {
+        "whatDid": "สร้างโครงสร้างและหน้าเว็บ",
+        "whatLearned": "การจัด layout แบบ responsive",
+        "challenge": "ทำให้มือถืออ่านง่าย",
+        "nextStep": "เพิ่ม accessibility"
+      },
+      "evidence": ["https://example.com/first-website"]
+    },
+    {
+      "id": "student-1-web-2",
+      "title": "Portfolio Landing Page",
+      "type": "Personal Project",
+      "date": "2026-10-25",
+      "role": "Designer & Developer",
+      "description": "ออกแบบหน้า landing page สำหรับผลงาน",
+      "skills": ["JavaScript", "Bootstrap"],
+      "reflection": {
+        "whatDid": "วาง wireframe และเขียนหน้าเว็บ",
+        "whatLearned": "ใช้ component ให้สม่ำเสมอ",
+        "challenge": "เลือกเนื้อหาที่กระชับ",
+        "nextStep": "ทดสอบกับผู้ใช้"
+      },
+      "evidence": ["https://example.com/landing-page"]
+    }
+  ]
+}

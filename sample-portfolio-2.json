@@ -1,0 +1,42 @@
+{
+  "id": "portfolio-student-2-data",
+  "name": "Student 2 - Data Exploration Portfolio",
+  "displayName": "Student 2",
+  "enjoy": "ค้นหารูปแบบจากข้อมูล",
+  "tried": "Spreadsheet และการทำกราฟ",
+  "curious": "Data visualization",
+  "items": [
+    {
+      "id": "student-2-data-1",
+      "title": "Student Survey Summary",
+      "type": "Course Assignment",
+      "date": "2026-10-20",
+      "role": "Data Analyst",
+      "description": "สรุปผลแบบสอบถามของนักศึกษา",
+      "skills": ["Spreadsheet", "Charts"],
+      "reflection": {
+        "whatDid": "ทำความสะอาดและจัดกลุ่มข้อมูล",
+        "whatLearned": "เลือกกราฟให้เหมาะกับคำถาม",
+        "challenge": "ข้อมูลบางส่วนไม่ครบ",
+        "nextStep": "เพิ่มการตรวจสอบข้อมูล"
+      },
+      "evidence": ["https://example.com/survey-summary"]
+    },
+    {
+      "id": "student-2-data-2",
+      "title": "Study Habit Dashboard",
+      "type": "Personal Project",
+      "date": "2026-10-29",
+      "role": "Data Analyst",
+      "description": "ติดตามเวลาอ่านหนังสือรายสัปดาห์",
+      "skills": ["Data Analysis", "Visualization"],
+      "reflection": {
+        "whatDid": "บันทึกข้อมูลและสร้าง dashboard",
+        "whatLearned": "อ่านแนวโน้มจากข้อมูลรายวัน",
+        "challenge": "รักษาความต่อเนื่องในการบันทึก",
+        "nextStep": "เพิ่มเป้าหมายรายสัปดาห์"
+      },
+      "evidence": ["https://example.com/study-dashboard"]
+    }
+  ]
+}
