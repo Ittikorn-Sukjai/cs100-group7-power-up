@@ -45,3 +45,43 @@ function renderPreviewItem(item) {
   </article>`;
 }
 
+portfolioForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (!portfolioForm.checkValidity()) { portfolioForm.classList.add("was-validated"); return; }
+  const portfolio = currentPortfolio();
+  if (!portfolio) return;
+  const form = new FormData(portfolioForm);
+  portfolio.name = form.get("name").trim();
+  portfolio.displayName = form.get("displayName").trim();
+  portfolio.enjoy = form.get("enjoy").trim();
+  portfolio.tried = form.get("tried").trim();
+  portfolio.curious = form.get("curious").trim();
+  savePortfolios();
+  portfolioForm.reset();
+  portfolioForm.classList.remove("was-validated");
+  render();
+  showNotice(`บันทึกข้อมูลลงใน ${portfolio.slotLabel} แล้ว`);
+});
+
+itemForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (!itemForm.checkValidity()) { itemForm.classList.add("was-validated"); return; }
+  const portfolio = currentPortfolio();
+  if (!portfolio) return;
+  const form = new FormData(itemForm);
+  const item = {
+    id: `item-${crypto.randomUUID()}`,
+    title: form.get("title").trim(), type: form.get("type").trim(), date: form.get("date"),
+    role: form.get("role").trim(), description: form.get("description").trim(),
+    skills: form.get("skills").split(",").map((skill) => skill.trim()).filter(Boolean),
+    reflection: { whatDid: form.get("whatDid").trim(), whatLearned: form.get("whatLearned").trim(), challenge: form.get("challenge").trim(), nextStep: form.get("nextStep").trim() },
+    evidence: [form.get("evidence").trim()],
+  };
+  // Items are pushed only into the selected portfolio's own nested items array.
+  portfolio.items.push(item);
+  savePortfolios();
+  itemForm.reset();
+  itemForm.classList.remove("was-validated");
+  render();
+  showNotice(`บันทึก “${item.title}” ลงใน ${portfolio.slotLabel} แล้ว`);
+});
